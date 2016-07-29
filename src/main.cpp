@@ -38,45 +38,45 @@ int main(int argc, char* argv[])
         dest_port = argv[2];
     }
 
-	try
-	{
+    try
+    {
         std::cout << "SimpleTelnetClient is tring to connect " << dest_ip << ":" << dest_port << std::endl;
 
-		boost::asio::io_service io_service;
+        boost::asio::io_service io_service;
 
-		// resolve the host name and port number to an iterator that can be used to connect to the server
-		tcp::resolver resolver(io_service);
-		tcp::resolver::query query(dest_ip, dest_port);
-		tcp::resolver::iterator iterator = resolver.resolve(query);
-		// define an instance of the main class of this program
+        // resolve the host name and port number to an iterator that can be used to connect to the server
+        tcp::resolver resolver(io_service);
+        tcp::resolver::query query(dest_ip, dest_port);
+        tcp::resolver::iterator iterator = resolver.resolve(query);
+        // define an instance of the main class of this program
 
-		AsioTelnetClient telnet_client(io_service, iterator);
+        AsioTelnetClient telnet_client(io_service, iterator);
 
         telnet_client.setReceivedSocketCallback([](const std::string& message) {
-        	std::cout << message;
+            std::cout << message;
         });
 
         telnet_client.setClosedSocketCallback([]() {
             std::cout << " # disconnected" << std::endl;
         });
 
-		while (1)
-		{
-			char ch;
+        while (1)
+        {
+            char ch;
             std::cin.get(ch); // blocking wait for standard input
 
-			if (ch == 3) // ctrl-C to end program
-				break;
-			
+            if (ch == 3) // ctrl-C to end program
+                break;
+
             telnet_client.write(ch);
-		}
-	}
-	catch (std::exception& e)
-	{
+        }
+    }
+    catch (std::exception& e)
+    {
         std::cerr << "Exception: " << e.what() << "\n";
-	}
+    }
 #ifdef POSIX // restore default buffering of standard input
-	tcsetattr(0, TCSANOW, &stored_settings);
+    tcsetattr(0, TCSANOW, &stored_settings);
 #endif
-	return 0;
+    return 0;
 }

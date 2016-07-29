@@ -31,8 +31,8 @@ const unsigned char LOGOUT = 18;
 
 // VT100/ANSI codes
 const unsigned char VT_ESC = 27;
-const unsigned char VT_BRACE = '['; 
-const unsigned char VT_SUB = ';'; 
+const unsigned char VT_BRACE = '[';
+const unsigned char VT_SUB = ';';
 const unsigned char VT_QUESTION = '?';
 
 const unsigned char VT_GRAPHICS_ATTRIBUTE = 'm';

@@ -1,4 +1,5 @@
-#pragma once    //  for only win32
+#ifndef __ASIO_TELNET_CLIENT_H__
+#define __ASIO_TELNET_CLIENT_H__
 
 #include <deque>
 #include <string>
@@ -70,3 +71,5 @@ private:
     std::function<void(const std::string& strData)> callback_receive_data_fn_;
     std::function<void()> callback_closesocket_fn_;
 };
+
+#endif // !__ASIO_TELNET_CLIENT_H__

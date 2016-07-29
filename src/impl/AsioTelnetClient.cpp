@@ -1,11 +1,11 @@
 /* AsioTelnetClient.cpp
-A simple demonstration telnet client with Boost asio
+    A simple demonstration telnet client with Boost asio
 
-Parameters:
-hostname or address
-port - typically 23 for telnet service
+    Parameters:
+        hostname or address
+        port - typically 23 for telnet service
 
-To end the application, send Ctrl-C on standard input
+    To end the application, send Ctrl-C on standard input
 */
 
 #include <iostream>
@@ -63,7 +63,7 @@ void AsioTelnetClient::write(const std::string msg) // pass the write data to th
 
 // asynchronously connect a socket to the specified remote endpoint and call connect_complete when it completes or fails
 void AsioTelnetClient::connect_start(tcp::resolver::iterator endpoint_iterator)
-{  
+{
     tcp::endpoint endpoint = *endpoint_iterator;
 
     socket_.async_connect(endpoint,
@@ -74,7 +74,7 @@ void AsioTelnetClient::connect_start(tcp::resolver::iterator endpoint_iterator)
 }
 
 void AsioTelnetClient::connect_complete(const boost::system::error_code& error, tcp::resolver::iterator endpoint_iterator)
-{ 
+{
     // the connection to the server has now completed or failed and returned an error
     if (!error) // success, so start waiting for read data
         read_start();
@@ -100,7 +100,7 @@ void AsioTelnetClient::read_start(void)
 void AsioTelnetClient::read_complete(const boost::system::error_code& error, size_t bytes_transferred)
 { // the asynchronous read operation has now completed or failed and returned an error
     if (!error)
-    { 
+    {
         // read completed, so process the data
         if (pending_buf_.length() > 0)
         {
@@ -170,7 +170,7 @@ void AsioTelnetClient::do_write(const std::string msg)
 
     for (auto it : msg)
         write_msgs_.push_back(it); // store in write buffer
-    
+
     if (!write_in_progress) // if nothing is currently being written, then start
         write_start();
 }
