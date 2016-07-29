@@ -14,7 +14,7 @@ const unsigned char WONT = 252;
 const unsigned char WILL = 251;
 const unsigned char SB = 250;
 const unsigned char SE = 240;
-const unsigned char ECHO = 1;
+const unsigned char ECHO_C = 1;
 const unsigned char STATUS = 5;
 const unsigned char AUTH = 37;
 const unsigned char WINDOWSIZE = 31;
@@ -54,4 +54,5 @@ const unsigned char VT_CURSOR_POS = 'H';
 
 // VT52:
 // A B C D F G H I J K Z = > < 
+
 #endif

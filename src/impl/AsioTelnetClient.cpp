@@ -20,7 +20,6 @@ To end the application, send Ctrl-C on standard input
 
 using namespace std;
 
-
 AsioTelnetClient::AsioTelnetClient(boost::asio::io_service& io_service, tcp::resolver::iterator endpoint_iterator)
     : io_service_(io_service), socket_(io_service)
 {

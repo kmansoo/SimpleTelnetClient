@@ -32,16 +32,20 @@ SET(CMAKE_CXX_FLAGS "-std=c++11")
 ADD_DEFINITIONS(-Wall -DCALIB_CFG_OS="${CMAKE_SYSTEM_NAME}" -DCALIB_CFG_CPU="${CMAKE_SYSTEM_PROCESSOR}")
 
 # Configuration
-include_directories( ./dependency/boost_1_61_0)
 
 add_executable (SimpleTelnetClient
     src/main.cpp
-    impl/AsioTelnetClient.cpp
-    impl/AsioTelnetClient.h
-    impl/TelnetProtocol.h
+    src/impl/AsioTelnetClient.cpp
+    src/impl/AsioTelnetClient.h
+    src/impl/TelnetProtocol.h
 )
 
 TARGET_LINK_LIBRARIES(SimpleTelnetClient
-	pthread
+    boost_chrono
+    boost_date_time
+    boost_regex
+    boost_system
+    boost_thread
+    pthread
 )
 
