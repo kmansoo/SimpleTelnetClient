@@ -3,7 +3,7 @@ This simple telnet client is based on boost c++ library. Also it uses Boost.Asio
 
 # How to build
 ##1. Windows
-   SimpleTelnetClient has a soluction file for Visual Studio 2015, so you can build very easy.
+   SimpleTelnetClient has a solution file for Visual Studio 2015, so you can build very easy.
 
 ##2. Linux
 ###  Preparation
